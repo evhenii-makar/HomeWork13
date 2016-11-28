@@ -2,12 +2,12 @@ import java.util.Arrays;
 
 
 
-public class Masiv {
+public class Masiv <T extends Number> {
 
-    private int [] arr = new int[10];
+    private Number [] arr = new Number[10];;
    //private int [] arr = {1, 5,56,81,32,5,0,0};
 
-    public void addArreyToArrey(int[] copy){
+    public void addArreyToArrey(T[] copy){
         System.out.println("Добавление массива");
         System.out.println(Arrays.toString(arr));
 
@@ -15,7 +15,7 @@ public class Masiv {
         int freeSize=0;
 
         for (int i =0 ; i< arr.length; i++){
-            if (arr[i]==0){
+            if (arr[i]==null){
                 freeSize++;
             }
         }
@@ -23,10 +23,10 @@ public class Masiv {
         int newLeng = arr.length+copy.length-freeSize;
         //System.out.println( "newLeng= " + newLeng);
 
-        int [] newArr= new int [newLeng];
+        Number [] newArr =  new Number  [newLeng];
         int j=0;
         for (int i=0; i< arr.length; i++){
-            if (arr[i]!=0){
+            if (arr[i]!=null){
                 newArr[j]=arr[i];
                 j++;
             }
@@ -36,7 +36,7 @@ public class Masiv {
 
 
         for (int i=0; i <newArr.length; i++)
-            if (newArr[i] == 0) {
+            if (newArr[i] == null) {
                 newArr[i] = copy[j];
                 j++;
             }
@@ -48,15 +48,15 @@ public class Masiv {
 
     }
 
-    public void addIntToArray(int a){
+    public void addIntToArray(T a){
         System.out.println("добавление числа");
         System.out.println("В масив "+Arrays.toString(arr)+ "добавляем число"+ a);
 
         int freeSize=0; // свободные ячейки
-        int [] newArrForInt;//новый масив
+        Number [] newArrForInt;//новый масив
 
         for(int i = 0; i<arr.length; i++) { // проверяемколичество свободных ячеек в масиве
-            if (arr[i] == 0) {
+            if (arr[i] == null) {
                 freeSize++;
             }
         }
@@ -64,10 +64,10 @@ public class Masiv {
         int j=0;
 
 
-        newArrForInt = new int[newSize]; //создаем новый масив требуемой длинны
+        newArrForInt =  new Number[newSize]; //создаем новый масив требуемой длинны
 
         for (int i = 0; i<arr.length; i++) { // копируем исходный масив
-            if (arr[i] != 0) {
+            if (arr[i] != null) {
                 newArrForInt[j] = arr[i];
                 j++;//
             }
@@ -75,7 +75,7 @@ public class Masiv {
 
 
         for (int i = 0; i<newArrForInt.length; i++) { // копируем новое число всвободную ячейку
-            if (newArrForInt[i] == 0) {
+            if (newArrForInt[i] == null) {
                 newArrForInt[i] = a;
             }
         }
@@ -89,8 +89,8 @@ public class Masiv {
         int max=0;
         int caseArr=0;
         for (int i = 0; i<arr.length; i++){
-            if (max < arr[i]){
-                max = arr[i];
+            if (max < ((int)arr[i])){
+                max =(int) arr[i];
                 caseArr=i;
             }
 
@@ -101,11 +101,11 @@ public class Masiv {
 
     }
     public void minElement(){
-        int min=arr[0];
+        int min=((int)arr[0]);
         int caseArr=0;
         for (int i = 0; i<arr.length; i++){
-            if (min > arr[i]){
-                min = arr[i];
+            if (min >((int) arr[i])) {
+                min = (int)arr[i];
                 caseArr=i;
             }
 
@@ -120,7 +120,7 @@ public class Masiv {
         int summ=0;
 
         for (int i = 0; i<arr.length; i++){
-            summ= summ+arr[i];
+            summ= summ+(int)arr[i];
 
 
         }
